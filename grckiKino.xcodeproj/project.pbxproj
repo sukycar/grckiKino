@@ -14,6 +14,14 @@
 		1F4D8F4E25C18F87001FF0F7 /* grckiKino.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F4C25C18F87001FF0F7 /* grckiKino.xcdatamodeld */; };
 		1F4D8F5025C18F88001FF0F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D8F4F25C18F88001FF0F7 /* Assets.xcassets */; };
 		1F4D8F5325C18F88001FF0F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D8F5125C18F88001FF0F7 /* LaunchScreen.storyboard */; };
+		1F4D8F5E25C1BCD4001FF0F7 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F5C25C1BCD4001FF0F7 /* TimeTableViewCell.swift */; };
+		1F4D8F5F25C1BCD4001FF0F7 /* TimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D8F5D25C1BCD4001FF0F7 /* TimeTableViewCell.xib */; };
+		1F4D8F6225C1BF25001FF0F7 /* FormatterHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6125C1BF25001FF0F7 /* FormatterHelpers.swift */; };
+		1F4D8F6625C1C3E5001FF0F7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6525C1C3E5001FF0F7 /* Colors.swift */; };
+		1F4D8F6B25C1CAB8001FF0F7 /* TableViewCell + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */; };
+		1F4D8F6F25C1CCAE001FF0F7 /* TableView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */; };
+		1F4D8F7D25C205A7001FF0F7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F7C25C205A7001FF0F7 /* API.swift */; };
+		1F4D8F8125C205F7001FF0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F8025C205F7001FF0F7 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,14 @@
 		1F4D8F4F25C18F88001FF0F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F4D8F5225C18F88001FF0F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F4D8F5425C18F88001FF0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F4D8F5C25C1BCD4001FF0F7 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		1F4D8F5D25C1BCD4001FF0F7 /* TimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeTableViewCell.xib; sourceTree = "<group>"; };
+		1F4D8F6125C1BF25001FF0F7 /* FormatterHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterHelpers.swift; sourceTree = "<group>"; };
+		1F4D8F6525C1C3E5001FF0F7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell + extension.swift"; sourceTree = "<group>"; };
+		1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView + extensions.swift"; sourceTree = "<group>"; };
+		1F4D8F7C25C205A7001FF0F7 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		1F4D8F8025C205F7001FF0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,10 @@
 		1F4D8F4225C18F86001FF0F7 /* grckiKino */ = {
 			isa = PBXGroup;
 			children = (
+				1F4D8F7B25C20588001FF0F7 /* Network */,
+				1F4D8F6925C1CA9B001FF0F7 /* Extensions */,
+				1F4D8F6425C1C3CD001FF0F7 /* Constants */,
+				1F4D8F5B25C1BC8C001FF0F7 /* Cells */,
 				1F4D8F4325C18F86001FF0F7 /* AppDelegate.swift */,
 				1F4D8F4525C18F86001FF0F7 /* SceneDelegate.swift */,
 				1F4D8F4725C18F86001FF0F7 /* ViewController.swift */,
@@ -68,6 +88,42 @@
 				1F4D8F4C25C18F87001FF0F7 /* grckiKino.xcdatamodeld */,
 			);
 			path = grckiKino;
+			sourceTree = "<group>";
+		};
+		1F4D8F5B25C1BC8C001FF0F7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D8F5C25C1BCD4001FF0F7 /* TimeTableViewCell.swift */,
+				1F4D8F5D25C1BCD4001FF0F7 /* TimeTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1F4D8F6425C1C3CD001FF0F7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D8F6125C1BF25001FF0F7 /* FormatterHelpers.swift */,
+				1F4D8F6525C1C3E5001FF0F7 /* Colors.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		1F4D8F6925C1CA9B001FF0F7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */,
+				1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1F4D8F7B25C20588001FF0F7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D8F7C25C205A7001FF0F7 /* API.swift */,
+				1F4D8F8025C205F7001FF0F7 /* Router.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4D8F5F25C1BCD4001FF0F7 /* TimeTableViewCell.xib in Resources */,
 				1F4D8F5325C18F88001FF0F7 /* LaunchScreen.storyboard in Resources */,
 				1F4D8F5025C18F88001FF0F7 /* Assets.xcassets in Resources */,
 				1F4D8F4B25C18F87001FF0F7 /* Main.storyboard in Resources */,
@@ -140,10 +197,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4D8F8125C205F7001FF0F7 /* Router.swift in Sources */,
+				1F4D8F6225C1BF25001FF0F7 /* FormatterHelpers.swift in Sources */,
 				1F4D8F4825C18F86001FF0F7 /* ViewController.swift in Sources */,
+				1F4D8F6F25C1CCAE001FF0F7 /* TableView + extensions.swift in Sources */,
 				1F4D8F4425C18F86001FF0F7 /* AppDelegate.swift in Sources */,
+				1F4D8F7D25C205A7001FF0F7 /* API.swift in Sources */,
+				1F4D8F6625C1C3E5001FF0F7 /* Colors.swift in Sources */,
 				1F4D8F4625C18F86001FF0F7 /* SceneDelegate.swift in Sources */,
+				1F4D8F6B25C1CAB8001FF0F7 /* TableViewCell + extension.swift in Sources */,
 				1F4D8F4E25C18F87001FF0F7 /* grckiKino.xcdatamodeld in Sources */,
+				1F4D8F5E25C1BCD4001FF0F7 /* TimeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
