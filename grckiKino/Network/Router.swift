@@ -8,7 +8,9 @@
 import Foundation
 
 enum Router {
-    case getData(gameId: Int)
+    case getDataForGame(gameId: Int)
+    case getDraw(gameId: Int, drawId: Int)
+    case showDraw
 
     private var baseURL: String {
         return "https://api.opap.gr/draws/v3.0/"
@@ -16,21 +18,22 @@ enum Router {
     
     var path: String {
         switch self {
-        case .getData(let id):
+        case .getDataForGame(let id):
             return "\(id)/upcoming/20"
-        }
-    }
-    
-    var httpMethod: String {
-        switch self {
-        case .getData:
-            return ".get"
+        case .showDraw:
+            return "https://ds.opap.gr/web_kino/kinoIframe.html?link=https://ds.opap.gr/web_kino/kino/html/Internet_PRODUCTION/KinoDraw_201910.html&resolution=847x500"
+        case .getDraw(let gameId, let drawId):
+            return "\(gameId)/\(drawId)"
         }
     }
     
     func fullUrl() -> URL{
         switch self {
-        case .getData:
+        case .getDataForGame:
+            return URL(string: self.baseURL + self.path)!
+        case .showDraw:
+            return URL(string: path)!
+        case .getDraw:
             return URL(string: self.baseURL + self.path)!
         }
         

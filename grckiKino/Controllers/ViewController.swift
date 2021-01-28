@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     
@@ -17,16 +18,17 @@ class ViewController: UIViewController {
     private let headerLabelsStackView = UIStackView()
     private let timeOfDrawLabel = UILabel()
     private let timeLeftLabel = UILabel()
+    private let timer = Timer()
+    var drawsArray : [Draw]?
+    var context = DataManager.shared.context
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configureTable()
         self.view.backgroundColor = Colors.Basic.black
-        let router = Router.getData(gameId: 1100)
-        _ = API.shared.request(router: router, parameters: nil) { (response) in
-            print(response)
-        }
-        
+        DrawService.getAll()
+        fetchDraws()
     }
     
     func configureTable(){
@@ -43,17 +45,26 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //temporary
+        return drawsArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = drawTimeTableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.cellIdentifier, for: indexPath) as! TimeTableViewCell
-        cell.counterLabel.textColor = .white //temporary
-        cell.startTimeLabel.textColor = .white //temporary
-        cell.counterLabel.text = "05:00" //temporary
-        cell.startTimeLabel.text = "12:00" //temporary
+        if let model = drawsArray?[indexPath.row] {
+            let timeNow = Date()
+            let timeLeft = model.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
+            let newTime = Date(timeIntervalSince1970: (timeLeft))
+            cell.set(with: model.getTimeValue(), counterTime: newTime, timeLeft: timeLeft)
+        }
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let item = drawsArray?[indexPath.row] {
+        let vc = DrawViewController.get(with: item)
+        self.present(vc, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -127,5 +138,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension ViewController {
+    func fetchDraws(){
+        let fetchRequest = Draw.fetchRequest() as NSFetchRequest
+        let sort = NSSortDescriptor(key: "drawTime", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        do {
+            drawsArray = try context?.fetch(fetchRequest)
+        } catch {
+            print("NOT FETCHED")
+        }
+        self.drawTimeTableView.reloadData()
+    }
 }
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0C0F8F25C356C000FD542D /* CollectionViewCell + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C0F8E25C356C000FD542D /* CollectionViewCell + extensions.swift */; };
+		1F0C0F9225C356ED00FD542D /* CollectionView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C0F9125C356ED00FD542D /* CollectionView + extensions.swift */; };
+		1F0C0F9725C365CC00FD542D /* NumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C0F9525C365CC00FD542D /* NumberCollectionViewCell.swift */; };
+		1F0C0F9825C365CC00FD542D /* NumberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0C0F9625C365CC00FD542D /* NumberCollectionViewCell.xib */; };
 		1F4D8F4425C18F86001FF0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F4325C18F86001FF0F7 /* AppDelegate.swift */; };
 		1F4D8F4625C18F86001FF0F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F4525C18F86001FF0F7 /* SceneDelegate.swift */; };
 		1F4D8F4825C18F86001FF0F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F4725C18F86001FF0F7 /* ViewController.swift */; };
@@ -20,11 +24,22 @@
 		1F4D8F6625C1C3E5001FF0F7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6525C1C3E5001FF0F7 /* Colors.swift */; };
 		1F4D8F6B25C1CAB8001FF0F7 /* TableViewCell + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */; };
 		1F4D8F6F25C1CCAE001FF0F7 /* TableView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */; };
-		1F4D8F7D25C205A7001FF0F7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F7C25C205A7001FF0F7 /* API.swift */; };
 		1F4D8F8125C205F7001FF0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F8025C205F7001FF0F7 /* Router.swift */; };
+		1F7ADB7325C2D3A100144DBE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7225C2D3A100144DBE /* DataManager.swift */; };
+		1F7ADB7625C2D50700144DBE /* NSManagedObjectContext + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7525C2D50700144DBE /* NSManagedObjectContext + extensions.swift */; };
+		1F7ADB7B25C2F5AB00144DBE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7A25C2F5AB00144DBE /* LoadingViewController.swift */; };
+		1F7ADB7E25C305A100144DBE /* NSManagedObject + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7D25C305A100144DBE /* NSManagedObject + extensions.swift */; };
+		1F7ADB8325C3398800144DBE /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB8225C3398800144DBE /* DrawViewController.swift */; };
+		1FB7F36725C29D50005B5C3E /* DrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7F36625C29D50005B5C3E /* DrawService.swift */; };
+		1FB7F36B25C2BFAA005B5C3E /* Draw+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7F36925C2BFAA005B5C3E /* Draw+CoreDataClass.swift */; };
+		1FB7F36C25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7F36A25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0C0F8E25C356C000FD542D /* CollectionViewCell + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell + extensions.swift"; sourceTree = "<group>"; };
+		1F0C0F9125C356ED00FD542D /* CollectionView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView + extensions.swift"; sourceTree = "<group>"; };
+		1F0C0F9525C365CC00FD542D /* NumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F0C0F9625C365CC00FD542D /* NumberCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberCollectionViewCell.xib; sourceTree = "<group>"; };
 		1F4D8F4025C18F86001FF0F7 /* grckiKino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = grckiKino.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F4D8F4325C18F86001FF0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F4D8F4525C18F86001FF0F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,8 +55,15 @@
 		1F4D8F6525C1C3E5001FF0F7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell + extension.swift"; sourceTree = "<group>"; };
 		1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView + extensions.swift"; sourceTree = "<group>"; };
-		1F4D8F7C25C205A7001FF0F7 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1F4D8F8025C205F7001FF0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1F7ADB7225C2D3A100144DBE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1F7ADB7525C2D50700144DBE /* NSManagedObjectContext + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext + extensions.swift"; sourceTree = "<group>"; };
+		1F7ADB7A25C2F5AB00144DBE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		1F7ADB7D25C305A100144DBE /* NSManagedObject + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject + extensions.swift"; sourceTree = "<group>"; };
+		1F7ADB8225C3398800144DBE /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		1FB7F36625C29D50005B5C3E /* DrawService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawService.swift; sourceTree = "<group>"; };
+		1FB7F36925C2BFAA005B5C3E /* Draw+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Draw+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1FB7F36A25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Draw+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +77,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0C0F8925C3531000FD542D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1F4D8F3725C18F86001FF0F7 = {
 			isa = PBXGroup;
 			children = (
@@ -74,18 +103,20 @@
 		1F4D8F4225C18F86001FF0F7 /* grckiKino */ = {
 			isa = PBXGroup;
 			children = (
+				1F0C0F8925C3531000FD542D /* Views */,
+				1F7ADB8125C3394100144DBE /* Controllers */,
+				1FB7F36E25C2BFB0005B5C3E /* Core */,
+				1FB7F36525C29D21005B5C3E /* Service */,
 				1F4D8F7B25C20588001FF0F7 /* Network */,
 				1F4D8F6925C1CA9B001FF0F7 /* Extensions */,
 				1F4D8F6425C1C3CD001FF0F7 /* Constants */,
 				1F4D8F5B25C1BC8C001FF0F7 /* Cells */,
 				1F4D8F4325C18F86001FF0F7 /* AppDelegate.swift */,
 				1F4D8F4525C18F86001FF0F7 /* SceneDelegate.swift */,
-				1F4D8F4725C18F86001FF0F7 /* ViewController.swift */,
 				1F4D8F4925C18F87001FF0F7 /* Main.storyboard */,
 				1F4D8F4F25C18F88001FF0F7 /* Assets.xcassets */,
 				1F4D8F5125C18F88001FF0F7 /* LaunchScreen.storyboard */,
 				1F4D8F5425C18F88001FF0F7 /* Info.plist */,
-				1F4D8F4C25C18F87001FF0F7 /* grckiKino.xcdatamodeld */,
 			);
 			path = grckiKino;
 			sourceTree = "<group>";
@@ -95,6 +126,8 @@
 			children = (
 				1F4D8F5C25C1BCD4001FF0F7 /* TimeTableViewCell.swift */,
 				1F4D8F5D25C1BCD4001FF0F7 /* TimeTableViewCell.xib */,
+				1F0C0F9525C365CC00FD542D /* NumberCollectionViewCell.swift */,
+				1F0C0F9625C365CC00FD542D /* NumberCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -113,6 +146,10 @@
 			children = (
 				1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */,
 				1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */,
+				1F7ADB7525C2D50700144DBE /* NSManagedObjectContext + extensions.swift */,
+				1F7ADB7D25C305A100144DBE /* NSManagedObject + extensions.swift */,
+				1F0C0F8E25C356C000FD542D /* CollectionViewCell + extensions.swift */,
+				1F0C0F9125C356ED00FD542D /* CollectionView + extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -120,10 +157,38 @@
 		1F4D8F7B25C20588001FF0F7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				1F4D8F7C25C205A7001FF0F7 /* API.swift */,
 				1F4D8F8025C205F7001FF0F7 /* Router.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		1F7ADB8125C3394100144DBE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D8F4725C18F86001FF0F7 /* ViewController.swift */,
+				1F7ADB7A25C2F5AB00144DBE /* LoadingViewController.swift */,
+				1F7ADB8225C3398800144DBE /* DrawViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1FB7F36525C29D21005B5C3E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1FB7F36625C29D50005B5C3E /* DrawService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1FB7F36E25C2BFB0005B5C3E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1FB7F36925C2BFAA005B5C3E /* Draw+CoreDataClass.swift */,
+				1FB7F36A25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift */,
+				1F4D8F4C25C18F87001FF0F7 /* grckiKino.xcdatamodeld */,
+				1F7ADB7225C2D3A100144DBE /* DataManager.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +252,7 @@
 				1F4D8F5325C18F88001FF0F7 /* LaunchScreen.storyboard in Resources */,
 				1F4D8F5025C18F88001FF0F7 /* Assets.xcassets in Resources */,
 				1F4D8F4B25C18F87001FF0F7 /* Main.storyboard in Resources */,
+				1F0C0F9825C365CC00FD542D /* NumberCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,17 +263,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F7ADB7E25C305A100144DBE /* NSManagedObject + extensions.swift in Sources */,
+				1F0C0F9725C365CC00FD542D /* NumberCollectionViewCell.swift in Sources */,
 				1F4D8F8125C205F7001FF0F7 /* Router.swift in Sources */,
+				1F0C0F9225C356ED00FD542D /* CollectionView + extensions.swift in Sources */,
+				1F7ADB7325C2D3A100144DBE /* DataManager.swift in Sources */,
 				1F4D8F6225C1BF25001FF0F7 /* FormatterHelpers.swift in Sources */,
+				1F7ADB7B25C2F5AB00144DBE /* LoadingViewController.swift in Sources */,
+				1F0C0F8F25C356C000FD542D /* CollectionViewCell + extensions.swift in Sources */,
 				1F4D8F4825C18F86001FF0F7 /* ViewController.swift in Sources */,
 				1F4D8F6F25C1CCAE001FF0F7 /* TableView + extensions.swift in Sources */,
 				1F4D8F4425C18F86001FF0F7 /* AppDelegate.swift in Sources */,
-				1F4D8F7D25C205A7001FF0F7 /* API.swift in Sources */,
+				1FB7F36B25C2BFAA005B5C3E /* Draw+CoreDataClass.swift in Sources */,
 				1F4D8F6625C1C3E5001FF0F7 /* Colors.swift in Sources */,
+				1F7ADB7625C2D50700144DBE /* NSManagedObjectContext + extensions.swift in Sources */,
 				1F4D8F4625C18F86001FF0F7 /* SceneDelegate.swift in Sources */,
+				1F7ADB8325C3398800144DBE /* DrawViewController.swift in Sources */,
+				1FB7F36C25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift in Sources */,
 				1F4D8F6B25C1CAB8001FF0F7 /* TableViewCell + extension.swift in Sources */,
 				1F4D8F4E25C18F87001FF0F7 /* grckiKino.xcdatamodeld in Sources */,
 				1F4D8F5E25C1BCD4001FF0F7 /* TimeTableViewCell.swift in Sources */,
+				1FB7F36725C29D50005B5C3E /* DrawService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
