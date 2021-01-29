@@ -7,11 +7,9 @@
 
 import UIKit
 
+
 class DrawViewController: UIViewController {
 
-   
-    
-    @IBOutlet weak var topCollectionView: UICollectionView!
     
     @IBOutlet weak var drawDetailsView: UIView!
     @IBOutlet weak var timeOfDrawLabel: UILabel!
@@ -34,7 +32,11 @@ class DrawViewController: UIViewController {
     @IBOutlet weak var selectionCollectionView: UICollectionView!
     
     var draw: Draw?
-
+    private var selectedNumbersCount = Int()
+    private var selectionAllowed = true
+    var numbersArray = [Int]()
+    var model : [SelectedScreen]?
+    var deselectInitialCell : Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,16 +44,25 @@ class DrawViewController: UIViewController {
         styleViews()
         selectionCollectionView.delegate = self
         selectionCollectionView.dataSource = self
+        configureCollectionView()
+        self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "Something Else", style: .plain, target: nil, action: nil)
+    }
+    
+    func configureCollectionView(){
+        // configure numbers selection collection view
         selectionCollectionView.register(for: NumberCollectionViewCell.cellIdentifier)
-        topCollectionView.delegate = self
-        topCollectionView.dataSource = self
+        selectionCollectionView.allowsMultipleSelection = true
+        let selectionCollectionLayout = UICollectionViewFlowLayout()
+        selectionCollectionLayout.minimumLineSpacing = 2
+        selectionCollectionLayout.minimumInteritemSpacing = 2
+        selectionCollectionLayout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 15, right: 15)
+        selectionCollectionLayout.scrollDirection = .vertical
+        selectionCollectionView.collectionViewLayout = selectionCollectionLayout
     }
     
     func styleViews(){
         self.view.backgroundColor = Colors.Basic.black
-
-        // configure top collection view
-        self.topCollectionView.backgroundColor = Colors.Selection.darkBlue
         
         // configure draw details view
         self.drawDetailsView.backgroundColor = Colors.Selection.gray
@@ -152,7 +163,7 @@ class DrawViewController: UIViewController {
         numbersTitleLabel.text = "Brojevi:"
         numbersLabel.textColor = Colors.Basic.white
         numbersLabel.font = UIFont.systemFont(ofSize: 14)
-        numbersLabel.text = "8"
+        numbersLabel.text = String(selectedNumbersCount)
     }
 
 }
@@ -162,7 +173,7 @@ extension DrawViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == selectionCollectionView {
         return 80
         } else {
-            return 0
+            return 3
         }
     }
     
@@ -170,13 +181,27 @@ extension DrawViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == selectionCollectionView {
         let cell = selectionCollectionView.dequeueReusableCell(withReuseIdentifier: NumberCollectionViewCell.cellIdentifier, for: indexPath) as! NumberCollectionViewCell
         cell.numberLabel.text = String(indexPath.row + 1)
-        
+        cell.selectedNumber = self
         return cell
-        } else {
-            return UICollectionViewCell()
         }
+            return UICollectionViewCell()
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let cell = selectionCollectionView.dequeueReusableCell(withReuseIdentifier: NumberCollectionViewCell.cellIdentifier, for: indexPath) as! NumberCollectionViewCell
+            if cell.shouldChangeLabelBackgroundWhenSelected == true {
+                cell.shouldChangeLabelBackgroundWhenSelected = false
+            } else {
+                cell.shouldChangeLabelBackgroundWhenSelected = true
+            }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let width = ((collectionView.frame.width - 60) / 10)
+            return CGSize(width: width, height: width)
+        return CGSize()
+    }
     
 }
 
@@ -188,3 +213,30 @@ extension DrawViewController {
         return myViewController
     }
 }
+
+extension DrawViewController: NumberSelected {
+    func getNumber(number: Int) {
+        if numbersArray.contains(number){
+                numbersArray.removeAll { (num) -> Bool in
+                    num == number
+                }
+            selectedNumbersCount -= 1
+            numbersLabel.text = String(selectedNumbersCount)
+            selectionAllowed = true
+        } else {
+            if selectedNumbersCount < 15 {
+            numbersArray.append(number)
+            selectedNumbersCount += 1
+            numbersLabel.text = String(selectedNumbersCount)
+            } else {
+                selectionAllowed = false
+            }
+        }
+        print(numbersArray)
+        print(selectedNumbersCount)
+        print(selectionAllowed)
+
+    }
+
+}
+

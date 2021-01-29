@@ -62,7 +62,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = drawsArray?[indexPath.row] {
-        let vc = DrawViewController.get(with: item)
+            let vc = TabBarViewController.get(with: item)
+        vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true, completion: nil)
         }
     }

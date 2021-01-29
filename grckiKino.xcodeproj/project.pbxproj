@@ -25,11 +25,15 @@
 		1F4D8F6B25C1CAB8001FF0F7 /* TableViewCell + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */; };
 		1F4D8F6F25C1CCAE001FF0F7 /* TableView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */; };
 		1F4D8F8125C205F7001FF0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F8025C205F7001FF0F7 /* Router.swift */; };
+		1F50C80A25C49C31004D0AA8 /* LiveDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F50C80925C49C31004D0AA8 /* LiveDrawViewController.swift */; };
+		1F50C80D25C4A623004D0AA8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F50C80C25C4A623004D0AA8 /* TabBarViewController.swift */; };
 		1F7ADB7325C2D3A100144DBE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7225C2D3A100144DBE /* DataManager.swift */; };
 		1F7ADB7625C2D50700144DBE /* NSManagedObjectContext + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7525C2D50700144DBE /* NSManagedObjectContext + extensions.swift */; };
 		1F7ADB7B25C2F5AB00144DBE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7A25C2F5AB00144DBE /* LoadingViewController.swift */; };
 		1F7ADB7E25C305A100144DBE /* NSManagedObject + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7D25C305A100144DBE /* NSManagedObject + extensions.swift */; };
 		1F7ADB8325C3398800144DBE /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB8225C3398800144DBE /* DrawViewController.swift */; };
+		1FB2BFBC25C454B60025A2D6 /* ScreenSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2BFBA25C454B60025A2D6 /* ScreenSelectionCell.swift */; };
+		1FB2BFBD25C454B60025A2D6 /* ScreenSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB2BFBB25C454B60025A2D6 /* ScreenSelectionCell.xib */; };
 		1FB7F36725C29D50005B5C3E /* DrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7F36625C29D50005B5C3E /* DrawService.swift */; };
 		1FB7F36B25C2BFAA005B5C3E /* Draw+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7F36925C2BFAA005B5C3E /* Draw+CoreDataClass.swift */; };
 		1FB7F36C25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7F36A25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift */; };
@@ -56,11 +60,15 @@
 		1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell + extension.swift"; sourceTree = "<group>"; };
 		1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView + extensions.swift"; sourceTree = "<group>"; };
 		1F4D8F8025C205F7001FF0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1F50C80925C49C31004D0AA8 /* LiveDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDrawViewController.swift; sourceTree = "<group>"; };
+		1F50C80C25C4A623004D0AA8 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1F7ADB7225C2D3A100144DBE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1F7ADB7525C2D50700144DBE /* NSManagedObjectContext + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext + extensions.swift"; sourceTree = "<group>"; };
 		1F7ADB7A25C2F5AB00144DBE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		1F7ADB7D25C305A100144DBE /* NSManagedObject + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject + extensions.swift"; sourceTree = "<group>"; };
 		1F7ADB8225C3398800144DBE /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		1FB2BFBA25C454B60025A2D6 /* ScreenSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSelectionCell.swift; sourceTree = "<group>"; };
+		1FB2BFBB25C454B60025A2D6 /* ScreenSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenSelectionCell.xib; sourceTree = "<group>"; };
 		1FB7F36625C29D50005B5C3E /* DrawService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawService.swift; sourceTree = "<group>"; };
 		1FB7F36925C2BFAA005B5C3E /* Draw+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Draw+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FB7F36A25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Draw+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -128,6 +136,8 @@
 				1F4D8F5D25C1BCD4001FF0F7 /* TimeTableViewCell.xib */,
 				1F0C0F9525C365CC00FD542D /* NumberCollectionViewCell.swift */,
 				1F0C0F9625C365CC00FD542D /* NumberCollectionViewCell.xib */,
+				1FB2BFBA25C454B60025A2D6 /* ScreenSelectionCell.swift */,
+				1FB2BFBB25C454B60025A2D6 /* ScreenSelectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -168,6 +178,8 @@
 				1F4D8F4725C18F86001FF0F7 /* ViewController.swift */,
 				1F7ADB7A25C2F5AB00144DBE /* LoadingViewController.swift */,
 				1F7ADB8225C3398800144DBE /* DrawViewController.swift */,
+				1F50C80925C49C31004D0AA8 /* LiveDrawViewController.swift */,
+				1F50C80C25C4A623004D0AA8 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -252,6 +264,7 @@
 				1F4D8F5325C18F88001FF0F7 /* LaunchScreen.storyboard in Resources */,
 				1F4D8F5025C18F88001FF0F7 /* Assets.xcassets in Resources */,
 				1F4D8F4B25C18F87001FF0F7 /* Main.storyboard in Resources */,
+				1FB2BFBD25C454B60025A2D6 /* ScreenSelectionCell.xib in Resources */,
 				1F0C0F9825C365CC00FD542D /* NumberCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F50C80A25C49C31004D0AA8 /* LiveDrawViewController.swift in Sources */,
 				1F7ADB7E25C305A100144DBE /* NSManagedObject + extensions.swift in Sources */,
 				1F0C0F9725C365CC00FD542D /* NumberCollectionViewCell.swift in Sources */,
 				1F4D8F8125C205F7001FF0F7 /* Router.swift in Sources */,
@@ -277,6 +291,8 @@
 				1FB7F36B25C2BFAA005B5C3E /* Draw+CoreDataClass.swift in Sources */,
 				1F4D8F6625C1C3E5001FF0F7 /* Colors.swift in Sources */,
 				1F7ADB7625C2D50700144DBE /* NSManagedObjectContext + extensions.swift in Sources */,
+				1FB2BFBC25C454B60025A2D6 /* ScreenSelectionCell.swift in Sources */,
+				1F50C80D25C4A623004D0AA8 /* TabBarViewController.swift in Sources */,
 				1F4D8F4625C18F86001FF0F7 /* SceneDelegate.swift in Sources */,
 				1F7ADB8325C3398800144DBE /* DrawViewController.swift in Sources */,
 				1FB7F36C25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift in Sources */,
