@@ -44,14 +44,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         configureIcons()
         self.tabBar.barTintColor = Colors.Selection.darkBlue
         self.tabBar.isTranslucent = false
-        
+        self.tabBarController?.view.backgroundColor = Colors.Basic.black
     }
+    
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let tabViewControllers = tabBarController.viewControllers
         let fromView = tabBarController.selectedViewController?.view
         let toView = viewController.view
-
         if (fromView == toView) {
             return false
         }
@@ -74,7 +74,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             toView.clipsToBounds = false
             self.view.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
-//                fromView.transform = .identity
                 if (toIndex < fromIndex) {
                     toView.transform = offScreenLeft
                     fromView.transform = offScreenRight
@@ -95,7 +94,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
                 viewController.view.layoutIfNeeded()
                 tabBarController.selectedIndex = toIndex
                 self.view.isUserInteractionEnabled = true
-
             })
         }
 
@@ -110,15 +108,13 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyBoard.view
+//        vc.draw = self.draw
     }
-    */
+
 
 }
 

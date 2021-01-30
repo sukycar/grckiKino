@@ -22,6 +22,7 @@ extension Draw {
     @NSManaged public var gameId: Int64
     @NSManaged public var status: String?
     @NSManaged public var visualDraw: Int64
+    @NSManaged public var drawSelected: Bool
 
 }
 

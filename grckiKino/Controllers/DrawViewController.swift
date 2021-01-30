@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class DrawViewController: UIViewController {
@@ -15,6 +16,7 @@ class DrawViewController: UIViewController {
     @IBOutlet weak var timeOfDrawLabel: UILabel!
     @IBOutlet weak var separatorLabel: UILabel!
     @IBOutlet weak var drawIdLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     
     @IBOutlet weak var combinationsView: UIView!
     @IBOutlet var numberOfCombinationsCollection: [UILabel]!
@@ -32,21 +34,43 @@ class DrawViewController: UIViewController {
     @IBOutlet weak var selectionCollectionView: UICollectionView!
     
     var draw: Draw?
+    var context = DataManager.shared.context
     private var selectedNumbersCount = Int()
     private var selectionAllowed = true
     var numbersArray = [Int]()
-    var model : [SelectedScreen]?
-    var deselectInitialCell : Bool?
-
+    private var timer = Timer()
+    var timeLeft = TimeInterval()
+    var newTime = Date()
+    let timeNow = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        fetchSelectedDraw()
         styleViews()
         selectionCollectionView.delegate = self
         selectionCollectionView.dataSource = self
         configureCollectionView()
-        self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: "Something Else", style: .plain, target: nil, action: nil)
+        if let draw = draw {
+        timeLeft = draw.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
+        newTime = Date(timeIntervalSince1970: (timeLeft))
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {[weak self] (timer) in
+            self?.newTime -= 1
+            self?.timeLeft -= 1
+            DispatchQueue.main.async {
+                let formattedTime = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
+                if formattedTime == "00:00" {
+                    self?.timerLabel.text = "Vreme isteklo"
+                    self?.timer.invalidate()
+                } else if self?.timeLeft ?? 0 < 10 && self?.timeLeft ?? 0 != 0{
+                    self?.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
+                    self?.timerLabel.textColor = Colors.Basic.red
+                } else {
+                    self?.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
+                }
+            }
+        })
+        }
     }
     
     func configureCollectionView(){
@@ -66,19 +90,21 @@ class DrawViewController: UIViewController {
         
         // configure draw details view
         self.drawDetailsView.backgroundColor = Colors.Selection.gray
-        timeOfDrawLabel.font = UIFont.systemFont(ofSize: 14)
+        timeOfDrawLabel.font = UIFont.systemFont(ofSize: 12)
         timeOfDrawLabel.textColor = Colors.Basic.white
         if let time = draw?.getTimeValue() {
             let timeString = StaticHelpers.dateTimeFormatterHHmm.string(from: time)
             timeOfDrawLabel.text = "Vreme izvlačenja: \(timeString)"
         }
-        separatorLabel.font = UIFont.systemFont(ofSize: 14)
+        separatorLabel.font = UIFont.systemFont(ofSize: 12)
         separatorLabel.textColor = Colors.Basic.white
         separatorLabel.text = " | "
-        drawIdLabel.font = UIFont.systemFont(ofSize: 14)
+        drawIdLabel.font = UIFont.systemFont(ofSize: 12)
         drawIdLabel.textColor = Colors.Basic.white
         let drawId = String(draw?.drawId ?? 0)
         drawIdLabel.text = "Kolo: \(drawId)"
+        timerLabel.font = UIFont.systemFont(ofSize: 12)
+        timerLabel.textColor = Colors.Basic.white
         
         
         // configure selection collection view
@@ -164,6 +190,35 @@ class DrawViewController: UIViewController {
         numbersLabel.textColor = Colors.Basic.white
         numbersLabel.font = UIFont.systemFont(ofSize: 14)
         numbersLabel.text = String(selectedNumbersCount)
+
+        
+        
+    }
+    
+    func setTimers(){
+        if timeLeft > 0 {
+            if self.timeLeft < 10 && self.timeLeft != 0{
+                self.timerLabel.textColor = Colors.Basic.red
+                self.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self.newTime)
+            } else {
+                self.timerLabel.textColor = Colors.Basic.white
+                self.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self.newTime)
+            }
+            } else {
+                self.timer.invalidate()
+                self.timerLabel.text = "Vreme isteklo"
+            }
+    }
+    
+    func fetchSelectedDraw(){
+        let request = Draw.fetchRequest() as NSFetchRequest
+        let predicate = NSPredicate(format: "drawSelected = true")
+        request.predicate = predicate
+        do {
+            draw = try context?.fetch(request).first
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
 }

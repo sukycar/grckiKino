@@ -14,3 +14,26 @@ extension UICollectionView{
         self.register(nib, forCellWithReuseIdentifier: cellIdentifier)
     }
 }
+
+extension UICollectionView{
+    func registerHeaderView(for reusableViewIdentifier: String) {
+        let nib = UINib(nibName: reusableViewIdentifier, bundle: Bundle.main)
+        self.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reusableViewIdentifier)
+    }
+    
+    func registerFooterView(for reusableViewIdentifier: String) {
+        let nib = UINib(nibName: reusableViewIdentifier, bundle: Bundle.main)
+        self.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: reusableViewIdentifier)
+    }
+    
+}
+
+extension UICollectionReusableView {
+    static var reusableViewIdentifier: String {
+        let seperated = NSStringFromClass(self).components(separatedBy: ".")
+        if seperated.count > 1 {
+            return seperated[1]
+        }
+        return seperated[0]
+    }
+}

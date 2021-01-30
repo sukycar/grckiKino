@@ -3,12 +3,20 @@
     <entity name="Draw" representedClassName="Draw" syncable="YES">
         <attribute name="drawBreak" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="drawId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="drawSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="drawTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="gameId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="visualDraw" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="DrawResult" representedClassName="DrawResult" syncable="YES">
+        <attribute name="drawId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="drawTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="gameId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="list" optional="YES" attributeType="Transformable"/>
+    </entity>
     <elements>
-        <element name="Draw" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Draw" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="DrawResult" positionX="-54" positionY="45" width="128" height="89"/>
     </elements>
 </model>

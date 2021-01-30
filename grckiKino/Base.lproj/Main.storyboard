@@ -122,7 +122,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZw-xO-HK8">
-                                                <rect key="frame" x="83" y="0.0" width="291" height="50"/>
+                                                <rect key="frame" x="83" y="0.0" width="41.5" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3t-nb-ysm" userLabel="Timer Label">
+                                                <rect key="frame" x="124.5" y="0.0" width="249.5" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -395,6 +401,7 @@
                         <outlet property="separatorLabel" destination="jgT-kx-tye" id="QkI-XE-Mse"/>
                         <outlet property="separatorView" destination="dZx-FG-MSo" id="HG0-XA-ybq"/>
                         <outlet property="timeOfDrawLabel" destination="1n1-Gq-7ns" id="X4r-GV-zt9"/>
+                        <outlet property="timerLabel" destination="u3t-nb-ysm" id="Tn5-Hr-OAv"/>
                         <outlet property="titlesHolderStackView" destination="d4T-Dd-E24" id="6J3-qG-AkZ"/>
                         <outletCollection property="quotaTitlesCollection" destination="sJK-fy-byk" collectionClass="NSMutableArray" id="jBk-zf-DyZ"/>
                         <outletCollection property="quotaTitlesCollection" destination="k6E-Hq-d0N" collectionClass="NSMutableArray" id="FRd-Ip-Tax"/>
@@ -456,14 +463,39 @@
         <!--Item-->
         <scene sceneID="Pji-5A-mAN">
             <objects>
-                <viewController id="tbV-Y5-eeF" sceneMemberID="viewController">
+                <viewController id="tbV-Y5-eeF" customClass="ResultsViewController" customModule="grckiKino" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="znc-Kp-gRD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rhm-cr-csV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="23b-X0-hnU">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="23b-X0-hnU" id="NdX-1f-6tV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ZLw-t6-bms"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rhm-cr-csV" firstAttribute="leading" secondItem="ZLw-t6-bms" secondAttribute="leading" id="5md-72-FF9"/>
+                            <constraint firstItem="ZLw-t6-bms" firstAttribute="trailing" secondItem="rhm-cr-csV" secondAttribute="trailing" id="HUA-2L-uf4"/>
+                            <constraint firstItem="ZLw-t6-bms" firstAttribute="bottom" secondItem="rhm-cr-csV" secondAttribute="bottom" id="pNm-qm-U0R"/>
+                            <constraint firstItem="rhm-cr-csV" firstAttribute="top" secondItem="ZLw-t6-bms" secondAttribute="top" id="rYi-8C-4pZ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="6qQ-fh-ERS"/>
+                    <connections>
+                        <outlet property="resultsTableView" destination="rhm-cr-csV" id="Cpy-9g-zvx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XK0-ZA-5RW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -475,6 +507,7 @@
                 <tabBarController storyboardIdentifier="TabBarViewController" automaticallyAdjustsScrollViewInsets="NO" id="3ea-1g-nBP" customClass="TabBarViewController" customModule="grckiKino" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2CL-E5-D5J">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>

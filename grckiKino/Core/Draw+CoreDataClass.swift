@@ -19,6 +19,7 @@ public class Draw: NSManagedObject {
         self.gameId = json[CodingKeys.gameId.rawValue] as! Int64
         self.status = json[CodingKeys.status.rawValue] as! String
         self.visualDraw = json[CodingKeys.visualDraw.rawValue] as! Int64
+        self.drawSelected = false
     }
 }
 
@@ -30,11 +31,20 @@ extension Draw {
         case gameId
         case status
         case visualDraw
+        case drawSelected
     }
     
     func getTimeValue() -> Date {
         let startTimeConverted = Double(self.drawTime)
         let date = Date(timeIntervalSince1970: (startTimeConverted / 1000.0))
         return date
+    }
+    
+    func changeSelectedStatus(){
+        if self.drawSelected == false {
+            self.drawSelected = true
+        } else {
+            self.drawSelected = false
+        }
     }
 }

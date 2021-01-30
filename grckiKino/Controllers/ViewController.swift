@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     private let timeLeftLabel = UILabel()
     private let timer = Timer()
     var drawsArray : [Draw]?
+    
     var context = DataManager.shared.context
     
     override func viewDidLoad() {
@@ -27,8 +28,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         configureTable()
         self.view.backgroundColor = Colors.Basic.black
-        DrawService.getAll()
         fetchDraws()
+        
+        
     }
     
     func configureTable(){
@@ -63,8 +65,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = drawsArray?[indexPath.row] {
             let vc = TabBarViewController.get(with: item)
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+            item.changeSelectedStatus()
+            try! context?.save()
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: {
+                self.view.backgroundColor = Colors.Basic.black
+                self.drawTimeTableView.isHidden = true
+            })
         }
     }
     
@@ -130,7 +137,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         headerLabelsStackView.addArrangedSubview(timeOfDrawLabel)
         headerLabelsStackView.addArrangedSubview(timeLeftLabel)
-
+        
         return headerView
     }
     
@@ -153,5 +160,6 @@ extension ViewController {
         }
         self.drawTimeTableView.reloadData()
     }
+    
 }
 

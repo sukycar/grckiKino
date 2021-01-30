@@ -38,5 +38,9 @@ struct Colors{
         static let red = UIColor.init(red: 241.0/255.0, green: 43.0/255.0, blue: 40.0/255.0, alpha: 1)
         static let orange = UIColor.init(red: 254.0/255.0, green: 170.0/255.0, blue: 58.0/255.0, alpha: 1)
         static let pink = UIColor.init(red: 241.0/255.0, green: 58.0/255.0, blue: 254.0/255.0, alpha: 1)
+        static let yellow = UIColor.yellow
+        static let lightBlue = UIColor.init(red: 143.0/255.0, green: 171.0/255.0, blue: 200.0/255.0, alpha: 1)
+        static let blue = UIColor.init(red: 6.0/255.0, green: 137.0/255.0, blue: 222.0/255.0, alpha: 1)
+
     }
 }

@@ -18,7 +18,9 @@ class LoadingViewController: UIViewController {
         super.viewDidLoad()
         styleViews()
         deleteObjects()
+        deleteResultObjects()
         DrawService.getAll()
+        DrawService.getDrawsByDate(withDates: "2021-01-29", toDate: "2021-01-29")
         timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { [weak self](timer) in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
@@ -36,6 +38,14 @@ class LoadingViewController: UIViewController {
     
     func deleteObjects(){
         let fetchRequest = Draw.fetchRequest() as NSFetchRequest
+        let objects = try! context?.fetch(fetchRequest)
+        objects?.forEach({ (draw) in
+            context?.delete(draw)
+        })
+    }
+    
+    func deleteResultObjects(){
+        let fetchRequest = DrawResult.fetchRequest() as NSFetchRequest
         let objects = try! context?.fetch(fetchRequest)
         objects?.forEach({ (draw) in
             context?.delete(draw)

@@ -11,6 +11,7 @@ enum Router {
     case getDataForGame(gameId: Int)
     case getDraw(gameId: Int, drawId: Int)
     case showDraw
+    case getDrawsForDate(gameId: Int, fromDate: String, toDate: String)
 
     private var baseURL: String {
         return "https://api.opap.gr/draws/v3.0/"
@@ -24,6 +25,8 @@ enum Router {
             return "https://ds.opap.gr/web_kino/kinoIframe.html?link=https://ds.opap.gr/web_kino/kino/html/Internet_PRODUCTION/KinoDraw_201910.html&resolution=847x500"
         case .getDraw(let gameId, let drawId):
             return "\(gameId)/\(drawId)"
+        case .getDrawsForDate(let gameId, let fromDate, let toDate):
+            return "\(gameId)/draw-date/\(fromDate)/\(toDate)"
         }
     }
     
@@ -34,6 +37,8 @@ enum Router {
         case .showDraw:
             return URL(string: path)!
         case .getDraw:
+            return URL(string: self.baseURL + self.path)!
+        case .getDrawsForDate:
             return URL(string: self.baseURL + self.path)!
         }
         
