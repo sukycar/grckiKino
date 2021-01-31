@@ -19,20 +19,15 @@ class ViewController: UIViewController {
     private let timeOfDrawLabel = UILabel()
     private let timeLeftLabel = UILabel()
     private let timer = Timer()
-    var cells = Array<TimerCellType>()
-    var drawsArray : [Draw]?
-    
-    var context = DataManager.shared.context
+    private var drawsArray : [Draw]?
+    private var context = DataManager.shared.context
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        fetchDraws()
         configureTable()
         self.view.backgroundColor = Colors.Basic.black
-        fetchDraws()
-        setCells()
-        
-        
     }
     
     func configureTable(){
@@ -46,16 +41,6 @@ class ViewController: UIViewController {
         drawTimeTableView.estimatedRowHeight = 1
     }
     
-    func setCells(){
-        cells.removeAll()
-        if let draws = drawsArray {
-            draws.forEach { (draw) in
-                cells.append(.timeCell(draw))
-            }
-        }
-    }
-    
-    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -64,25 +49,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = cells[indexPath.row]
-        switch cell {
-        case .timeCell(let draw):
-            let cell:TimeTableViewCell = drawTimeTableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.cellIdentifier, for: indexPath) as! TimeTableViewCell
-            let timeNow = Date()
-            let timeLeft = draw.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
-            let newTime = Date(timeIntervalSince1970: (timeLeft))
-            cell.set(with: draw.getTimeValue(), counterTime: newTime, timeLeft: timeLeft, counterInitialString: timeLeft > 3599 ? StaticHelpers.dateTimeFormatterHHmmss.string(from: newTime) : StaticHelpers.dateTimeFormatterMMss.string(from: newTime))
-            return cell
+        let cell = drawTimeTableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.cellIdentifier, for: indexPath) as! TimeTableViewCell
+        if let model = drawsArray?[indexPath.row] {
+            cell.set(with: model)
         }
-//        let cell = drawTimeTableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.cellIdentifier, for: indexPath) as! TimeTableViewCell
-//        if let model = drawsArray?[indexPath.row] {
-//            let timeNow = Date()
-//            let timeLeft = model.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
-//            let newTime = Date(timeIntervalSince1970: (timeLeft))
-//            cell.set(with: model.getTimeValue(), counterTime: newTime, timeLeft: timeLeft)
-//        }
-//        return UITableViewCell()
-        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -168,7 +139,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return 110
     }
     
-    
 }
 
 extension ViewController {
@@ -184,9 +154,6 @@ extension ViewController {
         self.drawTimeTableView.reloadData()
     }
     
-    enum TimerCellType {
-            case timeCell(Draw)
-    }
     
 }
 

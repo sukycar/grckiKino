@@ -12,8 +12,6 @@
 		1F0C0F9725C365CC00FD542D /* NumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C0F9525C365CC00FD542D /* NumberCollectionViewCell.swift */; };
 		1F0C0F9825C365CC00FD542D /* NumberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0C0F9625C365CC00FD542D /* NumberCollectionViewCell.xib */; };
 		1F3F796E25C568BC00492469 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F796D25C568BC00492469 /* ResultsViewController.swift */; };
-		1F3F797225C56D5500492469 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F797025C56D5500492469 /* ResultsTableViewCell.swift */; };
-		1F3F797325C56D5500492469 /* ResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F797125C56D5500492469 /* ResultsTableViewCell.xib */; };
 		1F3F797725C56DE200492469 /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F797525C56DE200492469 /* ResultsCollectionViewCell.swift */; };
 		1F3F797825C56DE200492469 /* ResultsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F797625C56DE200492469 /* ResultsCollectionViewCell.xib */; };
 		1F3F797C25C5795200492469 /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F797A25C5795200492469 /* ResultHeaderView.swift */; };
@@ -55,8 +53,6 @@
 		1F0C0F9525C365CC00FD542D /* NumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F0C0F9625C365CC00FD542D /* NumberCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberCollectionViewCell.xib; sourceTree = "<group>"; };
 		1F3F796D25C568BC00492469 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		1F3F797025C56D5500492469 /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
-		1F3F797125C56D5500492469 /* ResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsTableViewCell.xib; sourceTree = "<group>"; };
 		1F3F797525C56DE200492469 /* ResultsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F3F797625C56DE200492469 /* ResultsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsCollectionViewCell.xib; sourceTree = "<group>"; };
 		1F3F797A25C5795200492469 /* ResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
@@ -158,8 +154,6 @@
 				1F4D8F5D25C1BCD4001FF0F7 /* TimeTableViewCell.xib */,
 				1F0C0F9525C365CC00FD542D /* NumberCollectionViewCell.swift */,
 				1F0C0F9625C365CC00FD542D /* NumberCollectionViewCell.xib */,
-				1F3F797025C56D5500492469 /* ResultsTableViewCell.swift */,
-				1F3F797125C56D5500492469 /* ResultsTableViewCell.xib */,
 				1F3F797525C56DE200492469 /* ResultsCollectionViewCell.swift */,
 				1F3F797625C56DE200492469 /* ResultsCollectionViewCell.xib */,
 				1F4E954D25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.swift */,
@@ -294,7 +288,6 @@
 				1F3F797D25C5795200492469 /* ResultHeaderView.xib in Resources */,
 				1F4D8F5F25C1BCD4001FF0F7 /* TimeTableViewCell.xib in Resources */,
 				1F4D8F5325C18F88001FF0F7 /* LaunchScreen.storyboard in Resources */,
-				1F3F797325C56D5500492469 /* ResultsTableViewCell.xib in Resources */,
 				1F4D8F5025C18F88001FF0F7 /* Assets.xcassets in Resources */,
 				1F4D8F4B25C18F87001FF0F7 /* Main.storyboard in Resources */,
 				1F3F797825C56DE200492469 /* ResultsCollectionViewCell.xib in Resources */,
@@ -339,7 +332,6 @@
 				1F4D8F5E25C1BCD4001FF0F7 /* TimeTableViewCell.swift in Sources */,
 				1FB7F36725C29D50005B5C3E /* DrawService.swift in Sources */,
 				1F3F796E25C568BC00492469 /* ResultsViewController.swift in Sources */,
-				1F3F797225C56D5500492469 /* ResultsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

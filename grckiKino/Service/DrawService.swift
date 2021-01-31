@@ -19,29 +19,29 @@ class DrawService {
                 print(error.localizedDescription)
                 return
             }
-
+            
             // serialize data into object
             DataManager.shared.work { (context) in
                 if let data = data {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                    if let jsonArray = json as? NSArray {
-                        for(index, json) in jsonArray.enumerated() {
-                            if let json = json as? NSDictionary {
-                                let id = json["drawId"] as! Int64
-                                let fetchRequest = Draw.fetchRequest() as NSFetchRequest
-                                let predicate = NSPredicate(format: "drawId = %d", id)
-                                fetchRequest.predicate = predicate
-                                let item: Draw? = context.update(predicate: NSPredicate(format: "drawId = %d", id))
-                                item?.updateForList(with: json)
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                        if let jsonArray = json as? NSArray {
+                            for(index, json) in jsonArray.enumerated() {
+                                if let json = json as? NSDictionary {
+                                    let id = json["drawId"] as! Int64
+                                    let fetchRequest = Draw.fetchRequest() as NSFetchRequest
+                                    let predicate = NSPredicate(format: "drawId = %d", id)
+                                    fetchRequest.predicate = predicate
+                                    let item: Draw? = context.update(predicate: NSPredicate(format: "drawId = %d", id))
+                                    item?.updateForList(with: json)
+                                }
                             }
+                            try! context.save()
+                            try! context.parent?.save()
                         }
-                        try! context.save()
-                        try! context.parent?.save()
+                    } catch {
+                        print("Decoding failed")
                     }
-                } catch {
-                    print("Decoding failed")
-                }
                 }
             }
         }
@@ -55,33 +55,33 @@ class DrawService {
                 print(error.localizedDescription)
                 return
             }
-
+            
             // serialize data into object
             DataManager.shared.work { (context) in
                 if let data = data {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                    let jsonDict = json as? NSDictionary
-                    if let jsonArray = jsonDict?["content"] as? NSArray {
-                        for(index, json) in jsonArray.enumerated() {
-                            if let json = json as? NSDictionary {
-                                let id = json["drawId"] as! Int64
-                                let winningNumbers = json["winningNumbers"] as? NSDictionary
-                                let numbersList = winningNumbers?["list"] as? [Int]
-                                let fetchRequest = DrawResult.fetchRequest() as NSFetchRequest
-                                let predicate = NSPredicate(format: "drawId = %d", id)
-                                fetchRequest.predicate = predicate
-                                let item: DrawResult? = context.update(predicate: NSPredicate(format: "drawId = %d", id))
-                                item?.updateForList(with: json)
-                                item?.list = numbersList as NSObject?
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                        let jsonDict = json as? NSDictionary
+                        if let jsonArray = jsonDict?["content"] as? NSArray {
+                            for(index, json) in jsonArray.enumerated() {
+                                if let json = json as? NSDictionary {
+                                    let id = json["drawId"] as! Int64
+                                    let winningNumbers = json["winningNumbers"] as? NSDictionary
+                                    let numbersList = winningNumbers?["list"] as? [Int]
+                                    let fetchRequest = DrawResult.fetchRequest() as NSFetchRequest
+                                    let predicate = NSPredicate(format: "drawId = %d", id)
+                                    fetchRequest.predicate = predicate
+                                    let item: DrawResult? = context.update(predicate: NSPredicate(format: "drawId = %d", id))
+                                    item?.updateForList(with: json)
+                                    item?.list = numbersList as NSObject?
+                                }
                             }
+                            try! context.save()
+                            try! context.parent?.save()
                         }
-                        try! context.save()
-                        try! context.parent?.save()
+                    } catch {
+                        print("Decoding failed")
                     }
-                } catch {
-                    print("Decoding failed")
-                }
                 }
             }
         }

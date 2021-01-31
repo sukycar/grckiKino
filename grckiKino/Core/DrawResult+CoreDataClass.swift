@@ -12,7 +12,7 @@ import UIKit
 
 @objc(DrawResult)
 public class DrawResult: NSManagedObject {
-
+    
     func updateForList(with json: NSDictionary){
         self.drawId = json[CodingKeys.drawId.rawValue] as! Int64
         self.drawTime = json[CodingKeys.drawTime.rawValue] as! Int64

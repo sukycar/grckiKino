@@ -15,7 +15,7 @@ final class DataManager {
         context.automaticallyMergesChangesFromParent = true
         return context
     }()
-     
+    
     func work(update:@escaping ((_ context:NSManagedObjectContext)-> Void)){
         DispatchQueue.main.async {
             (UIApplication.shared.delegate as! AppDelegate).persistentContainer.performBackgroundTask { (context) in

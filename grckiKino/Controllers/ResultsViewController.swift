@@ -10,7 +10,7 @@ import CoreData
 
 
 class ResultsViewController: UIViewController {
-
+    
     @IBOutlet weak var resultsCollectionView: UICollectionView!
     
     var context = DataManager.shared.context
@@ -43,7 +43,7 @@ class ResultsViewController: UIViewController {
         self.resultsCollectionView.reloadData()
     }
     
-
+    
 }
 
 extension ResultsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -64,5 +64,5 @@ extension ResultsViewController: UICollectionViewDelegate, UICollectionViewDataS
         let height = self.view.frame.size.width / 1.5
         return CGSize(width: width, height: height)
     }
-
+    
 }

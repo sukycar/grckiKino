@@ -8,7 +8,7 @@
 import UIKit
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
-
+    
     enum TabBarIcon:Int {
         case talon = 0, liveDraw = 1, results = 2
         
@@ -32,11 +32,9 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
                 return UIImage(named: "img_izvlacenje")
             }
         }
-        
-        
         static let icons = [talon, liveDraw, results]
     }
-
+    
     var draw : Draw?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +56,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         if let fromView = fromView, let toView = toView, let selectedViewController = tabBarController.selectedViewController, let fromIndex = tabViewControllers?.firstIndex(of: selectedViewController), let toIndex = tabViewControllers?.firstIndex(of: viewController) {
             let offScreenRight = CGAffineTransform(translationX: toView.frame.width, y: 0)
             let offScreenLeft = CGAffineTransform(translationX: -toView.frame.width, y: 0)
-
+            
             // start the toView to the right of the screen
             if (toIndex < fromIndex) {
                 toView.transform = offScreenLeft
@@ -67,7 +65,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
                 toView.transform = offScreenRight
                 fromView.transform = offScreenLeft
             }
-
+            
             fromView.tag = 124
             toView.addSubview(fromView)
             let oldClipsToBounds = toView.clipsToBounds
@@ -82,7 +80,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
                     fromView.transform = offScreenLeft
                 }
                 toView.transform = CGAffineTransform.identity
-
+                
             }, completion: { finished in
                 toView.clipsToBounds = oldClipsToBounds
                 let subViews = toView.subviews
@@ -96,7 +94,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
                 self.view.isUserInteractionEnabled = true
             })
         }
-
+        
         return true
     }
     
@@ -107,15 +105,15 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             self.tabBar.items?[icon.offset].selectedImage = icon.element.image?.withRenderingMode(.alwaysTemplate)
         }
     }
-
-   
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyBoard.view
-//        vc.draw = self.draw
+        //        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        //        let vc = storyBoard.view
+        //        vc.draw = self.draw
     }
-
-
+    
+    
 }
 
 extension TabBarViewController {

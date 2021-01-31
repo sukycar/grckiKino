@@ -11,7 +11,7 @@ import CoreData
 
 @objc(Draw)
 public class Draw: NSManagedObject {
-
+    
     func updateForList(with json: NSDictionary){
         self.drawBreak = json[CodingKeys.drawBreak.rawValue] as! Int64
         self.drawId = json[CodingKeys.drawId.rawValue] as! Int64
@@ -46,6 +46,28 @@ extension Draw {
         } else {
             self.drawSelected = false
         }
+    }
+    
+    func getTimer() -> Date {
+        let timeNow = Date()
+        let timeLeft = self.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
+        let newTime = Date(timeIntervalSince1970: (timeLeft))
+        return newTime
+    }
+    
+    func getTimerStringValue() -> String {
+        var stringToReturn = String()
+        let timeNow = Date()
+        let timeLeft = self.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
+        let newTime = Date(timeIntervalSince1970: (timeLeft))
+        if timeLeft > 3599 {
+            stringToReturn = StaticHelpers.dateTimeFormatterHHmmss.string(from: newTime)
+        } else if timeLeft <= 0 {
+            stringToReturn = "Vreme je isteklo"
+        } else {
+            stringToReturn = StaticHelpers.dateTimeFormatterMMss.string(from: newTime)
+        }
+        return stringToReturn
     }
     
 }

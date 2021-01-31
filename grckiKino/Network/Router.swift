@@ -12,7 +12,7 @@ enum Router {
     case getDraw(gameId: Int, drawId: Int)
     case showDraw
     case getDrawsForDate(gameId: Int, fromDate: String, toDate: String)
-
+    
     private var baseURL: String {
         return "https://api.opap.gr/draws/v3.0/"
     }

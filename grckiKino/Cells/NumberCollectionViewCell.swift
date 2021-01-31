@@ -23,11 +23,13 @@ class NumberCollectionViewCell: UICollectionViewCell {
             onSelected(newValue)
         }
     }
+    var passedArray = [Int]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         styleViews()
+        NotificationCenter.default.addObserver(self, selector: #selector(disableInteraction), name: NSNotification.Name(rawValue: "limitReached"), object: nil)
     }
     
     func styleViews(){
@@ -45,6 +47,9 @@ class NumberCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = Colors.Basic.gray.cgColor
     }
     
+    @objc func disableInteraction(){
+        self.isUserInteractionEnabled = false
+    }
     func onSelected(_ newValue: Bool){
         if shouldChangeLabelBackgroundWhenSelected {
             labelHolderView.backgroundColor = newValue ? Colors.Selection.blue : .clear

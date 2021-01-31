@@ -10,7 +10,7 @@ import CoreData
 
 
 class DrawViewController: UIViewController {
-
+    
     
     @IBOutlet weak var drawDetailsView: UIView!
     @IBOutlet weak var timeOfDrawLabel: UILabel!
@@ -25,7 +25,7 @@ class DrawViewController: UIViewController {
     @IBOutlet weak var titlesHolderStackView: UIStackView!
     @IBOutlet weak var separatorView: UIView!
     
-
+    
     @IBOutlet weak var selectionTopView: UIView!
     @IBOutlet weak var randomSelectionButton: UIButton!
     @IBOutlet weak var numbersTitleLabel: UILabel!
@@ -41,7 +41,6 @@ class DrawViewController: UIViewController {
     private var timer = Timer()
     var timeLeft = TimeInterval()
     var newTime = Date()
-    let timeNow = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,26 +51,27 @@ class DrawViewController: UIViewController {
         selectionCollectionView.dataSource = self
         configureCollectionView()
         if let draw = draw {
-        timeLeft = draw.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
-        newTime = Date(timeIntervalSince1970: (timeLeft))
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {[weak self] (timer) in
-            self?.newTime -= 1
-            self?.timeLeft -= 1
-            DispatchQueue.main.async {
-                let formattedTime = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
-                if formattedTime == "00:00" {
-                    self?.timerLabel.text = "Vreme isteklo"
-                    self?.timer.invalidate()
-                } else if self?.timeLeft ?? 0 < 10 && self?.timeLeft ?? 0 != 0{
-                    self?.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
-                    self?.timerLabel.textColor = Colors.Basic.red
-                } else if self?.timeLeft ?? 0 > 3600 {
-                    self?.timerLabel.text = StaticHelpers.dateTimeFormatterHHmmss.string(from: self?.newTime ?? Date())
-                } else {
-                    self?.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
+            timeLeft = draw.getTimeValue().timeIntervalSince1970 - Date().timeIntervalSince1970
+            newTime = draw.getTimer()
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {[weak self] (timer) in
+                self?.newTime -= 1
+                self?.timeLeft -= 1
+                DispatchQueue.main.async {
+                    let formattedTime = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
+                    if formattedTime == "00:00" {
+                        self?.timerLabel.text = "Vreme isteklo"
+                        self?.timer.invalidate()
+                        self?.selectionCollectionView.isUserInteractionEnabled = false
+                    } else if self?.timeLeft ?? 0 < 10 && self?.timeLeft ?? 0 != 0{
+                        self?.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
+                        self?.timerLabel.textColor = Colors.Basic.red
+                    } else if self?.timeLeft ?? 0 > 3600 {
+                        self?.timerLabel.text = StaticHelpers.dateTimeFormatterHHmmss.string(from: self?.newTime ?? Date())
+                    } else {
+                        self?.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
+                    }
                 }
-            }
-        })
+            })
         }
     }
     
@@ -107,6 +107,11 @@ class DrawViewController: UIViewController {
         drawIdLabel.text = "Kolo: \(drawId)"
         timerLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 11) : UIFont.systemFont(ofSize: 12)
         timerLabel.textColor = Colors.Basic.white
+        if draw?.getTimeValue().timeIntervalSince1970 ?? TimeInterval() < Date().timeIntervalSince1970 {
+            self.timerLabel.text = "Vreme je isteklo"
+            self.timer.invalidate()
+            self.selectionCollectionView.allowsSelection = false
+        }
         
         
         // configure selection collection view
@@ -139,7 +144,7 @@ class DrawViewController: UIViewController {
         quotaCollection.forEach { (label) in
             label.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 11) : UIFont.systemFont(ofSize: 14)
             label.textColor = Colors.Basic.white
-
+            
             switch label.tag {
             case 8:
                 label.text = "3.75"
@@ -162,7 +167,7 @@ class DrawViewController: UIViewController {
         quotaTitlesCollection.forEach { (label) in
             label.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 11) : UIFont.systemFont(ofSize: 14)
             label.textColor = Colors.Basic.white
-
+            
             let tag = label.tag
             switch tag {
             case 15:
@@ -192,7 +197,7 @@ class DrawViewController: UIViewController {
         numbersLabel.textColor = Colors.Basic.white
         numbersLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 12) : UIFont.systemFont(ofSize: 14)
         numbersLabel.text = String(selectedNumbersCount)
-
+        
         
         
     }
@@ -206,10 +211,10 @@ class DrawViewController: UIViewController {
                 self.timerLabel.textColor = Colors.Basic.white
                 self.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self.newTime)
             }
-            } else {
-                self.timer.invalidate()
-                self.timerLabel.text = "Vreme isteklo"
-            }
+        } else {
+            self.timer.invalidate()
+            self.timerLabel.text = "Vreme isteklo"
+        }
     }
     
     func fetchSelectedDraw(){
@@ -222,13 +227,13 @@ class DrawViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-
+    
 }
 
 extension DrawViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == selectionCollectionView {
-        return 80
+            return 80
         } else {
             return 3
         }
@@ -236,27 +241,27 @@ extension DrawViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == selectionCollectionView {
-        let cell = selectionCollectionView.dequeueReusableCell(withReuseIdentifier: NumberCollectionViewCell.cellIdentifier, for: indexPath) as! NumberCollectionViewCell
-        cell.numberLabel.text = String(indexPath.row + 1)
-        cell.selectedNumber = self
-        return cell
+            let cell = selectionCollectionView.dequeueReusableCell(withReuseIdentifier: NumberCollectionViewCell.cellIdentifier, for: indexPath) as! NumberCollectionViewCell
+            cell.numberLabel.text = String(indexPath.row + 1)
+            cell.selectedNumber = self
+            return cell
         }
-            return UICollectionViewCell()
+        return UICollectionViewCell()
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let cell = selectionCollectionView.dequeueReusableCell(withReuseIdentifier: NumberCollectionViewCell.cellIdentifier, for: indexPath) as! NumberCollectionViewCell
-            if cell.shouldChangeLabelBackgroundWhenSelected == true {
-                cell.shouldChangeLabelBackgroundWhenSelected = false
-            } else {
-                cell.shouldChangeLabelBackgroundWhenSelected = true
-            }
+        let cell = selectionCollectionView.dequeueReusableCell(withReuseIdentifier: NumberCollectionViewCell.cellIdentifier, for: indexPath) as! NumberCollectionViewCell
+        if cell.shouldChangeLabelBackgroundWhenSelected == true {
+            cell.shouldChangeLabelBackgroundWhenSelected = false
+        } else {
+            cell.shouldChangeLabelBackgroundWhenSelected = true
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let width = ((collectionView.frame.width - 60) / 10)
-            return CGSize(width: width, height: width)
+        let width = ((collectionView.frame.width - 60) / 10)
+        return CGSize(width: width, height: width)
         return CGSize()
     }
     
@@ -274,26 +279,29 @@ extension DrawViewController {
 extension DrawViewController: NumberSelected {
     func getNumber(number: Int) {
         if numbersArray.contains(number){
-                numbersArray.removeAll { (num) -> Bool in
-                    num == number
-                }
+            numbersArray.removeAll { (num) -> Bool in
+                num == number
+            }
             selectedNumbersCount -= 1
             numbersLabel.text = String(selectedNumbersCount)
             selectionAllowed = true
         } else {
-            if selectedNumbersCount < 15 {
-            numbersArray.append(number)
-            selectedNumbersCount += 1
-            numbersLabel.text = String(selectedNumbersCount)
+            if selectedNumbersCount < 14 {
+                numbersArray.append(number)
+                selectedNumbersCount += 1
+                numbersLabel.text = String(selectedNumbersCount)
             } else {
-                selectionAllowed = false
+                numbersArray.append(number)
+                selectedNumbersCount += 1
+                numbersLabel.text = String(selectedNumbersCount)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "limitReached"), object: nil)
             }
         }
         print(numbersArray)
         print(selectedNumbersCount)
         print(selectionAllowed)
-
+        
     }
-
+    
 }
 
