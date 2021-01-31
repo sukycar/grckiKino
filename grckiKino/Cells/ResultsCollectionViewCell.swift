@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultsCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var labelHolderView: UIView!
     @IBOutlet weak var numberLabel: UILabel!
     
@@ -21,8 +21,8 @@ class ResultsCollectionViewCell: UICollectionViewCell {
         self.numberLabel.textColor = Colors.Basic.white
         self.backgroundColor = Colors.Basic.black
     }
-
-
+    
+    
     func set(with number: Int){
         
         switch number {

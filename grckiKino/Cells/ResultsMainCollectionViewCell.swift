@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultsMainCollectionViewCell: UICollectionViewCell {
-
+    
     
     var numbers : [Int]?
     private var draw = DrawResult()
@@ -24,7 +24,7 @@ class ResultsMainCollectionViewCell: UICollectionViewCell {
         self.frame.size.height = resultsCollectionView.contentSize.height
         self.backgroundColor = Colors.Basic.black
     }
-
+    
     func configureCollectionView(){
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.minimumLineSpacing = 2

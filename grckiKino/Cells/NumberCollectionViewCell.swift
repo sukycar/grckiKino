@@ -12,7 +12,7 @@ protocol NumberSelected{
 }
 
 class NumberCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var labelHolderView: UIView!
     
@@ -64,6 +64,6 @@ class NumberCollectionViewCell: UICollectionViewCell {
         }
     }
     
-
+    
 }
 

@@ -14,7 +14,7 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var resultsCollectionView: UICollectionView!
     
     var context = DataManager.shared.context
-    var resultsArray = [DrawResult]()
+    var resultsArray : [DrawResult]?
     
     
     override func viewDidLoad() {
@@ -36,27 +36,26 @@ class ResultsViewController: UIViewController {
         let sort = NSSortDescriptor(key: "drawId", ascending: true)
         request.sortDescriptors = [sort]
         do {
-            resultsArray = try context?.fetch(request) as! [DrawResult]
+            resultsArray = try context?.fetch(request)
         } catch {
             print("NOT FETCHED")
         }
         self.resultsCollectionView.reloadData()
     }
     
-    
 }
 
 extension ResultsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return resultsArray.count
+        return resultsArray?.count ?? 0
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = resultsCollectionView.dequeueReusableCell(withReuseIdentifier: ResultsMainCollectionViewCell.cellIdentifier, for: indexPath) as! ResultsMainCollectionViewCell
-        let model = resultsArray[indexPath.row]
-        cell.isHidden = false
+        if let model = resultsArray?[indexPath.row] {
         cell.set(with: model)
+        }
         return cell
     }
     

@@ -25,7 +25,6 @@ class DrawViewController: UIViewController {
     @IBOutlet weak var titlesHolderStackView: UIStackView!
     @IBOutlet weak var separatorView: UIView!
     
-    
     @IBOutlet weak var selectionTopView: UIView!
     @IBOutlet weak var randomSelectionButton: UIButton!
     @IBOutlet weak var numbersTitleLabel: UILabel!
@@ -262,7 +261,6 @@ extension DrawViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = ((collectionView.frame.width - 60) / 10)
         return CGSize(width: width, height: width)
-        return CGSize()
     }
     
 }
