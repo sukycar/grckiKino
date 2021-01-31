@@ -22,9 +22,6 @@ class ResultsCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = Colors.Basic.black
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
 
     func set(with number: Int){
         
@@ -56,8 +53,5 @@ class ResultsCollectionViewCell: UICollectionViewCell {
         numberLabel.text = String(number)
     }
     
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-    }
 }
 

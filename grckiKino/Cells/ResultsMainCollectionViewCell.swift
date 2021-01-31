@@ -48,14 +48,6 @@ class ResultsMainCollectionViewCell: UICollectionViewCell {
         self.resultsCollectionView.reloadData()
     }
     
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
 }
 
 extension ResultsMainCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
