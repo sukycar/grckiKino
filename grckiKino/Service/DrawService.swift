@@ -28,7 +28,7 @@ class DrawService {
                     if let jsonArray = json as? NSArray {
                         for(index, json) in jsonArray.enumerated() {
                             if let json = json as? NSDictionary {
-                                let id = json["drawTime"] as! Int64
+                                let id = json["drawId"] as! Int64
                                 let fetchRequest = Draw.fetchRequest() as NSFetchRequest
                                 let predicate = NSPredicate(format: "drawId = %d", id)
                                 fetchRequest.predicate = predicate
@@ -65,7 +65,7 @@ class DrawService {
                     if let jsonArray = jsonDict?["content"] as? NSArray {
                         for(index, json) in jsonArray.enumerated() {
                             if let json = json as? NSDictionary {
-                                let id = json["drawTime"] as! Int64
+                                let id = json["drawId"] as! Int64
                                 let winningNumbers = json["winningNumbers"] as? NSDictionary
                                 let numbersList = winningNumbers?["list"] as? [Int]
                                 let fetchRequest = DrawResult.fetchRequest() as NSFetchRequest
@@ -74,7 +74,6 @@ class DrawService {
                                 let item: DrawResult? = context.update(predicate: NSPredicate(format: "drawId = %d", id))
                                 item?.updateForList(with: json)
                                 item?.list = numbersList as NSObject?
-                                print(item)
                             }
                         }
                         try! context.save()

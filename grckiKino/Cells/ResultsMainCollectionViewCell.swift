@@ -1,5 +1,5 @@
 //
-//  ResultsTableViewCell.swift
+//  ResultsMainCollectionViewCell.swift
 //  grckiKino
 //
 //  Created by Vladimir Sukanica on 30.1.21..
@@ -7,14 +7,13 @@
 
 import UIKit
 
-class ResultsTableViewCell: UITableViewCell {
+class ResultsMainCollectionViewCell: UICollectionViewCell {
 
-    var draw : DrawResult? {
-        didSet{
-            self.numbers = draw?.getDrawNumbers()
-        }
-    }
+    
     var numbers : [Int]?
+    private var draw = DrawResult()
+    
+    
     @IBOutlet weak var resultsCollectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,30 +37,36 @@ class ResultsTableViewCell: UITableViewCell {
         resultsCollectionView.registerHeaderView(for: ResultHeaderView.reusableViewIdentifier)
         resultsCollectionView.isScrollEnabled = false
     }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func set(with draw: DrawResult?){
+    func set(with draw: DrawResult){
         self.draw = draw
+        self.numbers = draw.getDrawNumbers()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.reloadInputViews()
+    }
     
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
     
 }
 
-extension ResultsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ResultsMainCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numbers?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = resultsCollectionView.dequeueReusableCell(withReuseIdentifier: ResultsCollectionViewCell.cellIdentifier, for: indexPath) as! ResultsCollectionViewCell
-        if let model = numbers?[indexPath.row] {
+        let model = draw.getDrawNumbers()[indexPath.row]
         cell.set(with: model)
-        }
         return cell
     }
     
@@ -83,3 +88,4 @@ extension ResultsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     
     
 }
+

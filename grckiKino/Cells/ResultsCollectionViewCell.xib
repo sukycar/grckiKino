@@ -10,17 +10,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ResultsCollectionViewCell" customModule="grckiKino" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="93" height="85"/>
+            <rect key="frame" x="0.0" y="0.0" width="115" height="101"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="93" height="85"/>
+                <rect key="frame" x="0.0" y="0.0" width="115" height="101"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lj7-bq-bEy">
-                        <rect key="frame" x="0.0" y="3" width="93" height="82"/>
+                        <rect key="frame" x="0.0" y="3" width="115" height="98"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvY-id-cWx">
-                                <rect key="frame" x="25.5" y="30.5" width="42" height="21"/>
+                                <rect key="frame" x="36.5" y="38.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,12 +41,12 @@
                 <constraint firstAttribute="trailing" secondItem="Lj7-bq-bEy" secondAttribute="trailing" id="d5N-7s-xfZ"/>
                 <constraint firstAttribute="bottom" secondItem="Lj7-bq-bEy" secondAttribute="bottom" id="unH-zr-oqP"/>
             </constraints>
-            <size key="customSize" width="93" height="85"/>
+            <size key="customSize" width="115" height="101"/>
             <connections>
                 <outlet property="labelHolderView" destination="Lj7-bq-bEy" id="G2H-t4-Uj1"/>
                 <outlet property="numberLabel" destination="rvY-id-cWx" id="ZmQ-Fk-wby"/>
             </connections>
-            <point key="canvasLocation" x="5.0724637681159424" y="94.084821428571431"/>
+            <point key="canvasLocation" x="21.014492753623191" y="99.441964285714278"/>
         </collectionViewCell>
     </objects>
 </document>

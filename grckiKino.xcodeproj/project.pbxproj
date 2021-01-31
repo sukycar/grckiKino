@@ -34,6 +34,9 @@
 		1F4D8F6B25C1CAB8001FF0F7 /* TableViewCell + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */; };
 		1F4D8F6F25C1CCAE001FF0F7 /* TableView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */; };
 		1F4D8F8125C205F7001FF0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D8F8025C205F7001FF0F7 /* Router.swift */; };
+		1F4E954A25C5BA9C00AB9DC6 /* UIView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E954925C5BA9C00AB9DC6 /* UIView + extensions.swift */; };
+		1F4E954F25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E954D25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.swift */; };
+		1F4E955025C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4E954E25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.xib */; };
 		1F50C80A25C49C31004D0AA8 /* LiveDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F50C80925C49C31004D0AA8 /* LiveDrawViewController.swift */; };
 		1F50C80D25C4A623004D0AA8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F50C80C25C4A623004D0AA8 /* TabBarViewController.swift */; };
 		1F7ADB7325C2D3A100144DBE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ADB7225C2D3A100144DBE /* DataManager.swift */; };
@@ -76,6 +79,9 @@
 		1F4D8F6A25C1CAB8001FF0F7 /* TableViewCell + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell + extension.swift"; sourceTree = "<group>"; };
 		1F4D8F6E25C1CCAE001FF0F7 /* TableView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView + extensions.swift"; sourceTree = "<group>"; };
 		1F4D8F8025C205F7001FF0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1F4E954925C5BA9C00AB9DC6 /* UIView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + extensions.swift"; sourceTree = "<group>"; };
+		1F4E954D25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsMainCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F4E954E25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsMainCollectionViewCell.xib; sourceTree = "<group>"; };
 		1F50C80925C49C31004D0AA8 /* LiveDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDrawViewController.swift; sourceTree = "<group>"; };
 		1F50C80C25C4A623004D0AA8 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1F7ADB7225C2D3A100144DBE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -156,6 +162,8 @@
 				1F3F797125C56D5500492469 /* ResultsTableViewCell.xib */,
 				1F3F797525C56DE200492469 /* ResultsCollectionViewCell.swift */,
 				1F3F797625C56DE200492469 /* ResultsCollectionViewCell.xib */,
+				1F4E954D25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.swift */,
+				1F4E954E25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -178,6 +186,7 @@
 				1F7ADB7D25C305A100144DBE /* NSManagedObject + extensions.swift */,
 				1F0C0F8E25C356C000FD542D /* CollectionViewCell + extensions.swift */,
 				1F0C0F9125C356ED00FD542D /* CollectionView + extensions.swift */,
+				1F4E954925C5BA9C00AB9DC6 /* UIView + extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -281,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4E955025C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.xib in Resources */,
 				1F3F797D25C5795200492469 /* ResultHeaderView.xib in Resources */,
 				1F4D8F5F25C1BCD4001FF0F7 /* TimeTableViewCell.xib in Resources */,
 				1F4D8F5325C18F88001FF0F7 /* LaunchScreen.storyboard in Resources */,
@@ -317,8 +327,10 @@
 				1F3F798125C58F5B00492469 /* DrawResult+CoreDataClass.swift in Sources */,
 				1F4D8F6625C1C3E5001FF0F7 /* Colors.swift in Sources */,
 				1F7ADB7625C2D50700144DBE /* NSManagedObjectContext + extensions.swift in Sources */,
+				1F4E954F25C5C46C00AB9DC6 /* ResultsMainCollectionViewCell.swift in Sources */,
 				1F50C80D25C4A623004D0AA8 /* TabBarViewController.swift in Sources */,
 				1F4D8F4625C18F86001FF0F7 /* SceneDelegate.swift in Sources */,
+				1F4E954A25C5BA9C00AB9DC6 /* UIView + extensions.swift in Sources */,
 				1F7ADB8325C3398800144DBE /* DrawViewController.swift in Sources */,
 				1FB7F36C25C2BFAA005B5C3E /* Draw+CoreDataProperties.swift in Sources */,
 				1F4D8F6B25C1CAB8001FF0F7 /* TableViewCell + extension.swift in Sources */,
@@ -404,7 +416,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -459,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

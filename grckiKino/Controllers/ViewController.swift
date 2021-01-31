@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     private let timeOfDrawLabel = UILabel()
     private let timeLeftLabel = UILabel()
     private let timer = Timer()
+    var cells = Array<TimerCellType>()
     var drawsArray : [Draw]?
     
     var context = DataManager.shared.context
@@ -29,6 +30,7 @@ class ViewController: UIViewController {
         configureTable()
         self.view.backgroundColor = Colors.Basic.black
         fetchDraws()
+        setCells()
         
         
     }
@@ -41,7 +43,18 @@ class ViewController: UIViewController {
         drawTimeTableView.separatorColor = Colors.Basic.gray
         drawTimeTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         drawTimeTableView.backgroundColor = Colors.Basic.black
+        drawTimeTableView.estimatedRowHeight = 1
     }
+    
+    func setCells(){
+        cells.removeAll()
+        if let draws = drawsArray {
+            draws.forEach { (draw) in
+                cells.append(.timeCell(draw))
+            }
+        }
+    }
+    
     
 }
 
@@ -51,14 +64,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = drawTimeTableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.cellIdentifier, for: indexPath) as! TimeTableViewCell
-        if let model = drawsArray?[indexPath.row] {
+        let cell = cells[indexPath.row]
+        switch cell {
+        case .timeCell(let draw):
+            let cell:TimeTableViewCell = drawTimeTableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.cellIdentifier, for: indexPath) as! TimeTableViewCell
             let timeNow = Date()
-            let timeLeft = model.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
+            let timeLeft = draw.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
             let newTime = Date(timeIntervalSince1970: (timeLeft))
-            cell.set(with: model.getTimeValue(), counterTime: newTime, timeLeft: timeLeft)
+            cell.set(with: draw.getTimeValue(), counterTime: newTime, timeLeft: timeLeft, counterInitialString: timeLeft > 3599 ? StaticHelpers.dateTimeFormatterHHmmss.string(from: newTime) : StaticHelpers.dateTimeFormatterMMss.string(from: newTime))
+            return cell
         }
-        return cell
+//        let cell = drawTimeTableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.cellIdentifier, for: indexPath) as! TimeTableViewCell
+//        if let model = drawsArray?[indexPath.row] {
+//            let timeNow = Date()
+//            let timeLeft = model.getTimeValue().timeIntervalSince1970 - timeNow.timeIntervalSince1970
+//            let newTime = Date(timeIntervalSince1970: (timeLeft))
+//            cell.set(with: model.getTimeValue(), counterTime: newTime, timeLeft: timeLeft)
+//        }
+//        return UITableViewCell()
         
     }
     
@@ -128,11 +151,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         timeOfDrawLabel.text = "Vreme izvlačenja"
         timeOfDrawLabel.textColor = Colors.Basic.white
-        timeOfDrawLabel.font = UIFont.systemFont(ofSize: 14)
+        timeOfDrawLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 12) : UIFont.systemFont(ofSize: 14)
         
         timeLeftLabel.text = "Preostalo za uplatu"
         timeLeftLabel.textColor = Colors.Basic.white
-        timeLeftLabel.font = UIFont.systemFont(ofSize: 14)
+        timeLeftLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 12) : UIFont.systemFont(ofSize: 14)
         timeLeftLabel.textAlignment = .right
         
         headerLabelsStackView.addArrangedSubview(timeOfDrawLabel)
@@ -151,7 +174,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController {
     func fetchDraws(){
         let fetchRequest = Draw.fetchRequest() as NSFetchRequest
-        let sort = NSSortDescriptor(key: "drawTime", ascending: true)
+        let sort = NSSortDescriptor(key: "drawId", ascending: true)
         fetchRequest.sortDescriptors = [sort]
         do {
             drawsArray = try context?.fetch(fetchRequest)
@@ -159,6 +182,10 @@ extension ViewController {
             print("NOT FETCHED")
         }
         self.drawTimeTableView.reloadData()
+    }
+    
+    enum TimerCellType {
+            case timeCell(Draw)
     }
     
 }

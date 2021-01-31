@@ -33,9 +33,18 @@ class ResultHeaderView: UICollectionReusableView {
             let drawId = String(draw.drawId)
             drawIdLabel.text = "Kolo: \(drawId)"
         }
-        
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.drawTimeLabel.isHidden = true
+        self.separatorLabel.isHidden = true
+        self.drawIdLabel.isHidden = true
+    }
+    
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+    }
 }
 
 

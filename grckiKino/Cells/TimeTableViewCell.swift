@@ -22,6 +22,7 @@ class TimeTableViewCell: UITableViewCell {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {[weak self] (timer) in
             self?.timeLeft -= 1
+            self?.newTime -= 1
             if self?.timeLeft ?? 0 >= 0 {
                 if self?.timeLeft ?? 0 > 3599 {
                     self?.counterLabel.textColor = Colors.Basic.white
@@ -51,7 +52,7 @@ class TimeTableViewCell: UITableViewCell {
 //                self?.setTimers()
 //            }
 //        })
-//        RunLoop.main.add(timer, forMode: .common)
+        RunLoop.main.add(timer, forMode: .common)
         
     }
 
@@ -61,10 +62,12 @@ class TimeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func set(with startTime: Date, counterTime: Date, timeLeft: TimeInterval){
+    func set(with startTime: Date, counterTime: Date, timeLeft: TimeInterval, counterInitialString: String){
+        self.startTimeLabel.isHidden = false
+        self.counterLabel.isHidden = false
         self.startTimeLabel.text = StaticHelpers.dateTimeFormatterHHmm.string(from: startTime)
         if timeIsUp == false {
-        self.counterLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: counterTime)
+        self.counterLabel.text = counterInitialString
         self.newTime = counterTime
         self.timeLeft = timeLeft
         } else {
@@ -83,6 +86,17 @@ class TimeTableViewCell: UITableViewCell {
 //            self.counterLabel.textColor = Colors.Basic.red
 //            self.counterLabel.text = "Vreme isteklo"
 //        }
+    }
+    
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.startTimeLabel.isHidden = true
+        self.counterLabel.isHidden = true
+        self.timer.fire()
     }
     
     func setTimers(){

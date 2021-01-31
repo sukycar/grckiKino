@@ -31,10 +31,15 @@ class NumberCollectionViewCell: UICollectionViewCell {
     }
     
     func styleViews(){
+        if self.isSmallScreen() {
+            numberLabel.font = UIFont.systemFont(ofSize: 12)
+            labelHolderView.layer.cornerRadius = labelHolderView.frame.size.height / 4
+        } else {
+            numberLabel.font = UIFont.systemFont(ofSize: 16)
+            labelHolderView.layer.cornerRadius = labelHolderView.frame.size.height / 3.1
+        }
         numberLabel.textColor = Colors.Basic.white
-        numberLabel.font = UIFont.systemFont(ofSize: 16)
         labelHolderView.backgroundColor = .clear
-        labelHolderView.layer.cornerRadius = labelHolderView.frame.size.height / 3.1
         labelHolderView.clipsToBounds = true
         self.layer.borderWidth = 1
         self.layer.borderColor = Colors.Basic.gray.cgColor

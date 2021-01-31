@@ -16,17 +16,17 @@ class LoadingViewController: UIViewController {
     private let context = DataManager.shared.context
     override func viewDidLoad() {
         super.viewDidLoad()
-        styleViews()
         deleteObjects()
         deleteResultObjects()
+        styleViews()
         DrawService.getAll()
         DrawService.getDrawsByDate(withDates: "2021-01-29", toDate: "2021-01-29")
-        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { [weak self](timer) in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {[weak self] in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             vc.modalPresentationStyle = .overFullScreen
             self?.present(vc, animated: true)
-        })
+        }
     }
     
     func styleViews(){
@@ -42,6 +42,7 @@ class LoadingViewController: UIViewController {
         objects?.forEach({ (draw) in
             context?.delete(draw)
         })
+        try! context?.save()
     }
     
     func deleteResultObjects(){
@@ -50,6 +51,7 @@ class LoadingViewController: UIViewController {
         objects?.forEach({ (draw) in
             context?.delete(draw)
         })
+        try! context?.save()
     }
     
 }

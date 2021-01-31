@@ -65,6 +65,8 @@ class DrawViewController: UIViewController {
                 } else if self?.timeLeft ?? 0 < 10 && self?.timeLeft ?? 0 != 0{
                     self?.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
                     self?.timerLabel.textColor = Colors.Basic.red
+                } else if self?.timeLeft ?? 0 > 3600 {
+                    self?.timerLabel.text = StaticHelpers.dateTimeFormatterHHmmss.string(from: self?.newTime ?? Date())
                 } else {
                     self?.timerLabel.text = StaticHelpers.dateTimeFormatterMMss.string(from: self?.newTime ?? Date())
                 }
@@ -90,7 +92,7 @@ class DrawViewController: UIViewController {
         
         // configure draw details view
         self.drawDetailsView.backgroundColor = Colors.Selection.gray
-        timeOfDrawLabel.font = UIFont.systemFont(ofSize: 12)
+        timeOfDrawLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 11) : UIFont.systemFont(ofSize: 12)
         timeOfDrawLabel.textColor = Colors.Basic.white
         if let time = draw?.getTimeValue() {
             let timeString = StaticHelpers.dateTimeFormatterHHmm.string(from: time)
@@ -99,11 +101,11 @@ class DrawViewController: UIViewController {
         separatorLabel.font = UIFont.systemFont(ofSize: 12)
         separatorLabel.textColor = Colors.Basic.white
         separatorLabel.text = " | "
-        drawIdLabel.font = UIFont.systemFont(ofSize: 12)
+        drawIdLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 11) : UIFont.systemFont(ofSize: 12)
         drawIdLabel.textColor = Colors.Basic.white
         let drawId = String(draw?.drawId ?? 0)
         drawIdLabel.text = "Kolo: \(drawId)"
-        timerLabel.font = UIFont.systemFont(ofSize: 12)
+        timerLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 11) : UIFont.systemFont(ofSize: 12)
         timerLabel.textColor = Colors.Basic.white
         
         
@@ -113,7 +115,7 @@ class DrawViewController: UIViewController {
         // configure combinations view
         self.combinationsView.backgroundColor = Colors.Selection.grayMedium
         numberOfCombinationsCollection.forEach { (label) in
-            label.font = UIFont.systemFont(ofSize: 14)
+            label.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 12) : UIFont.systemFont(ofSize: 14)
             label.textColor = Colors.Basic.white
             switch label.tag {
             case 1:
@@ -135,7 +137,7 @@ class DrawViewController: UIViewController {
             }
         }
         quotaCollection.forEach { (label) in
-            label.font = UIFont.systemFont(ofSize: 14)
+            label.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 11) : UIFont.systemFont(ofSize: 14)
             label.textColor = Colors.Basic.white
 
             switch label.tag {
@@ -158,7 +160,7 @@ class DrawViewController: UIViewController {
             }
         }
         quotaTitlesCollection.forEach { (label) in
-            label.font = UIFont.systemFont(ofSize: 14)
+            label.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 11) : UIFont.systemFont(ofSize: 14)
             label.textColor = Colors.Basic.white
 
             let tag = label.tag
@@ -185,10 +187,10 @@ class DrawViewController: UIViewController {
         randomSelectionButton.layer.cornerRadius = 3
         randomSelectionButton.clipsToBounds = true
         numbersTitleLabel.textColor = Colors.Basic.white
-        numbersTitleLabel.font = UIFont.systemFont(ofSize: 14)
+        numbersTitleLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 12) : UIFont.systemFont(ofSize: 14)
         numbersTitleLabel.text = "Brojevi:"
         numbersLabel.textColor = Colors.Basic.white
-        numbersLabel.font = UIFont.systemFont(ofSize: 14)
+        numbersLabel.font = self.view.isSmallScreen() ? UIFont.systemFont(ofSize: 12) : UIFont.systemFont(ofSize: 14)
         numbersLabel.text = String(selectedNumbersCount)
 
         

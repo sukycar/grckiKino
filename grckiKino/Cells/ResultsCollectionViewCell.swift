@@ -22,6 +22,12 @@ class ResultsCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = Colors.Basic.black
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.labelHolderView.isHidden = true
+        self.numberLabel.isHidden = true
+    }
+
     func set(with number: Int){
         
         if number < 11 {
@@ -47,6 +53,10 @@ class ResultsCollectionViewCell: UICollectionViewCell {
         labelHolderView.layer.cornerRadius = self.frame.size.height / 2
         
         numberLabel.text = String(number)
+    }
+    
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
     }
 }
 
