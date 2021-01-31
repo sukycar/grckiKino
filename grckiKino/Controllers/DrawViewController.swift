@@ -297,9 +297,6 @@ extension DrawViewController: NumberSelected {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "limitReached"), object: nil)
             }
         }
-        print(numbersArray)
-        print(selectedNumbersCount)
-        print(selectionAllowed)
         
     }
     

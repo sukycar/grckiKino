@@ -28,22 +28,25 @@ class ResultsCollectionViewCell: UICollectionViewCell {
 
     func set(with number: Int){
         
-        if number < 11 {
+        switch number {
+        case 1...10:
             borderColor = Colors.Result.yellow.cgColor
-        } else if number < 21 && number > 10{
+        case 11...20:
             borderColor = Colors.Result.orange.cgColor
-        } else if number < 31 && number > 20{
+        case 21...30:
             borderColor = Colors.Result.red.cgColor
-        } else if number < 41 && number > 30{
+        case 31...40:
             borderColor = Colors.Result.purple.cgColor
-        } else if number < 51 && number > 40{
+        case 41...50:
             borderColor = Colors.Result.pink.cgColor
-        } else if number < 61 && number > 50{
+        case 51...60:
             borderColor = Colors.Result.lightBlue.cgColor
-        } else if number < 71 && number > 60{
+        case 61...70:
             borderColor = Colors.Result.green.cgColor
-        } else if number < 81 && number > 70{
+        case 71...80:
             borderColor = Colors.Result.purple.cgColor
+        default:
+            return
         }
         
         labelHolderView.layer.borderColor = self.borderColor
