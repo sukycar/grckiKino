@@ -45,7 +45,7 @@ class ResultsMainCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.reloadInputViews()
+        self.resultsCollectionView.reloadData()
     }
     
     override func layoutIfNeeded() {

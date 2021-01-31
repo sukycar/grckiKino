@@ -51,9 +51,11 @@ extension ResultsViewController: UICollectionViewDelegate, UICollectionViewDataS
         return resultsArray.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = resultsCollectionView.dequeueReusableCell(withReuseIdentifier: ResultsMainCollectionViewCell.cellIdentifier, for: indexPath) as! ResultsMainCollectionViewCell
         let model = resultsArray[indexPath.row]
+        cell.isHidden = false
         cell.set(with: model)
         return cell
     }

@@ -24,8 +24,6 @@ class ResultsCollectionViewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.labelHolderView.isHidden = true
-        self.numberLabel.isHidden = true
     }
 
     func set(with number: Int){
@@ -45,7 +43,7 @@ class ResultsCollectionViewCell: UICollectionViewCell {
         } else if number < 71 && number > 60{
             borderColor = Colors.Result.green.cgColor
         } else if number < 81 && number > 70{
-            borderColor = Colors.Result.yellow.cgColor
+            borderColor = Colors.Result.purple.cgColor
         }
         
         labelHolderView.layer.borderColor = self.borderColor
